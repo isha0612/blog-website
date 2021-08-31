@@ -3,8 +3,12 @@
 <p> <%= homeContent %> </p>
 <% for(let i of posts) { %>
     <h1> <%= i.title %> </h1>
-    <p> <%= i.content.substring(0,100) + "... "%>
-        <a href="/posts/<%= i._id %>">Read more</a>
+    <% if(i.content > 100) { %>
+        <p> <%= i.content.substring(0,100) + "... " %>
+    <% } else { %>
+        <p> <%= i.content %>
+    <% } %>
+    <a href="/posts/<%= i._id %>">Read more</a>
     </p>
 <% } %>
 <%- include("partials/footer") -%>
